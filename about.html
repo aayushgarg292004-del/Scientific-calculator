@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Free Online Scientific Calculator</title>
+    <meta name="description" content="About our Free Online Scientific Calculator. A high-precision scientific calculator designed for students and engineers.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        calc: { bg: '#0f172a', card: '#1e293b', display: '#020617', accent: '#3b82f6' }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-calc-bg text-slate-900 dark:text-gray-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
+    <header class="bg-white dark:bg-calc-display border-b border-slate-200 dark:border-slate-800 py-4 transition-colors duration-300">
+        <div class="container mx-auto px-4 flex justify-between items-center max-w-4xl">
+            <a href="index.html" class="text-xl font-bold text-slate-800 dark:text-white hover:text-blue-500 dark:hover:text-calc-accent transition-colors">Scientific Calculator</a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">Back to Calculator</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-4xl">
+        <div class="bg-white dark:bg-calc-card rounded-3xl border border-slate-200 dark:border-slate-700 p-8 sm:p-12 shadow-xl dark:shadow-2xl transition-colors duration-300">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-8 text-slate-900 dark:text-white">About Us</h1>
+            <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-6 text-lg transition-colors">
+                <p>Welcome to our Free Online Scientific Calculator, your ultimate math tool designed for students, engineers, and professionals.</p>
+                <p>We aim to provide a high-precision scientific calculator that seamlessly bridges the gap between complex mathematical needs and intuitive user design. Whether you are solving trigonometry problems, calculating logarithmic functions, or simply doing basic arithmetic, our tool is built to handle it all with exceptional accuracy and speed.</p>
+                <p>Our calculator supports both degree and radian modes, maintains a history of your calculations, and dynamically adapts to any device for the best mobile and desktop experience.</p>
+                <p>Calculations are performed instantly in your browser, guaranteeing both speed and privacy since no mathematical data is ever transmitted to a server.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-calc-display py-8 mt-auto transition-colors duration-300">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 max-w-4xl">
+            <div class="text-slate-500 dark:text-slate-400 text-sm text-center md:text-left transition-colors">
+                &copy; <span id="year"></span> Free Online Scientific Calculator. All rights reserved.
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
+                <a href="index.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">Home</a>
+                <a href="about.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">About Us</a>
+                <a href="privacy.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('year').innerText = new Date().getFullYear();
+    </script>
+</body>
+</html>

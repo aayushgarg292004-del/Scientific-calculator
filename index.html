@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Scientific Calculator - Best Math Tool for Students</title>
+    <meta name="description" content="Professional, free online scientific calculator for algebra, trigonometry, and calculus. Built for students and engineers.">
+    <meta name="keywords" content="Free Online Scientific Calculator, Best Math Tool for Students, Math Calculator, Scientific Calculator Online">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7564440414393746" crossorigin="anonymous"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        calc: {
+                            bg: '#0f172a',
+                            card: '#1e293b',
+                            display: '#020617',
+                            btn: '#334155',
+                            btnHover: '#475569',
+                            btnActive: '#1e293b',
+                            accent: '#3b82f6',
+                            accentHover: '#2563eb',
+                            operator: '#f59e0b',
+                            operatorHover: '#d97706',
+                            danger: '#ef4444',
+                            dangerHover: '#dc2626'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .calc-btn {
+                @apply bg-slate-200 dark:bg-calc-btn text-slate-800 dark:text-gray-100 flex items-center justify-center rounded-xl p-3 sm:p-4 text-lg font-medium transition-all duration-200 active:scale-95 select-none hover:bg-slate-300 dark:hover:bg-calc-btnHover shadow-sm;
+            }
+        }
+    </style>
+    <script>
+        // Apply theme early to prevent flash
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-calc-bg text-slate-900 dark:text-gray-100 font-sans min-h-screen flex flex-col selection:bg-calc-accent selection:text-white transition-colors duration-300">
+
+    <!-- Header with Toggle -->
+    <header class="bg-white dark:bg-calc-display border-b border-slate-200 dark:border-slate-800 py-4 transition-colors duration-300">
+        <div class="container mx-auto px-4 flex justify-between items-center max-w-5xl">
+            <h1 class="text-xl font-bold text-slate-800 dark:text-white transition-colors">Scientific Calculator</h1>
+            <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+                <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Top Ad Placement -->
+    <div class="container mx-auto px-4 mt-6">
+        <div id="adsense-top" class="bg-white dark:bg-calc-card rounded-2xl border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center min-h-[90px] max-w-5xl mx-auto shadow-sm dark:shadow-none transition-colors duration-300">
+             <ins class="adsbygoogle"
+                  style="display:block; width:100%; height:90px;"
+                  data-ad-client="ca-pub-7564440414393746"
+                  data-ad-slot="1234567890"
+                  data-ad-format="horizontal"
+                  data-full-width-responsive="true"></ins>
+             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <main class="flex-grow container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8 justify-center items-start">
+        
+        <!-- Calculator Section -->
+        <div class="w-full lg:w-2/3 max-w-2xl">
+            <div class="bg-white dark:bg-calc-card rounded-3xl shadow-xl dark:shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 p-6 flex flex-col gap-6 transition-colors duration-300">
+                <!-- Display Area -->
+                <div class="bg-slate-100 dark:bg-calc-display rounded-2xl p-4 flex flex-col items-end justify-end min-h-[120px] shadow-inner border border-slate-200 dark:border-slate-800 relative transition-colors duration-300">
+                    <div class="absolute top-4 left-4 flex gap-2">
+                        <button id="mode-deg" class="text-xs font-bold px-2 py-1 rounded bg-blue-500 dark:bg-calc-accent text-white transition-colors">DEG</button>
+                        <button id="mode-rad" class="text-xs font-bold px-2 py-1 rounded text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-white transition-colors">RAD</button>
+                    </div>
+                    <div id="display-history" class="text-slate-500 dark:text-slate-400 text-sm h-6 overflow-hidden w-full text-right font-mono tracking-wider break-all mt-6 sm:mt-0 transition-colors"></div>
+                    <div id="display-current" class="text-4xl sm:text-5xl font-bold w-full text-right overflow-x-auto overflow-y-hidden font-mono tracking-tight mt-1 custom-scrollbar text-slate-900 dark:text-white transition-colors">0</div>
+                </div>
+
+                <!-- Keypad -->
+                <div class="grid grid-cols-4 sm:grid-cols-5 gap-3">
+                    <!-- Row 1 -->
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('sin(')">sin</button>
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('cos(')">cos</button>
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('tan(')">tan</button>
+                    <button class="calc-btn bg-red-500 dark:bg-calc-danger hover:bg-red-600 dark:hover:bg-calc-dangerHover font-semibold !text-white" onclick="clearAll()">AC</button>
+                    <button class="calc-btn bg-slate-500 dark:bg-slate-600 hover:bg-slate-600 dark:hover:bg-slate-500 !text-white" onclick="deleteLast()">DEL</button>
+                    
+                    <!-- Row 2 -->
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('asin(')">sin⁻¹</button>
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('acos(')">cos⁻¹</button>
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('atan(')">tan⁻¹</button>
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputValue('π')">π</button>
+                    <button class="calc-btn text-amber-600 dark:text-calc-operator font-bold text-xl" onclick="inputValue('÷')">÷</button>
+                    
+                    <!-- Row 3 -->
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('log(')">log</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('7')">7</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('8')">8</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('9')">9</button>
+                    <button class="calc-btn text-amber-600 dark:text-calc-operator font-bold text-xl" onclick="inputValue('×')">×</button>
+                    
+                    <!-- Row 4 -->
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('ln(')">ln</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('4')">4</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('5')">5</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('6')">6</button>
+                    <button class="calc-btn text-amber-600 dark:text-calc-operator font-bold text-xl" onclick="inputValue('−')">−</button>
+                    
+                    <!-- Row 5 -->
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputFunc('sqrt(')">√</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('1')">1</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('2')">2</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('3')">3</button>
+                    <button class="calc-btn text-amber-600 dark:text-calc-operator font-bold text-xl" onclick="inputValue('+')">+</button>
+                    
+                    <!-- Row 6 -->
+                    <button class="calc-btn text-blue-600 dark:text-blue-400" onclick="inputValue('e')">e</button>
+                    <button class="calc-btn text-blue-600 dark:text-blue-400 font-bold" onclick="inputValue('^')">xʸ</button>
+                    <button class="calc-btn font-semibold text-xl" onclick="inputValue('0')">0</button>
+                    <button class="calc-btn font-bold text-xl" onclick="inputValue('.')">.</button>
+                    <button class="calc-btn bg-blue-500 dark:bg-calc-accent hover:bg-blue-600 dark:hover:bg-calc-accentHover font-bold text-2xl shadow-lg shadow-blue-500/30 !text-white" onclick="calculate()">=</button>
+
+                    <!-- Extra Row for mobile mostly -->
+                    <button class="calc-btn text-blue-600 dark:text-blue-400 col-span-2 sm:col-span-1" onclick="inputValue('(')">(</button>
+                    <button class="calc-btn text-blue-600 dark:text-blue-400 col-span-2 sm:col-span-1" onclick="inputValue(')')">)</button>
+                    <button class="calc-btn text-blue-600 dark:text-blue-400 col-span-4 sm:col-span-3" onclick="inputValue('Ans')">Ans</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar (History & Ads) -->
+        <div class="w-full lg:w-1/3 flex flex-col gap-6">
+            <!-- AD PLACEMENT PLACEHOLDER -->
+            <div id="adsense-sidebar" class="bg-white dark:bg-calc-card rounded-2xl border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center min-h-[250px] shadow-sm dark:shadow-none transition-colors duration-300">
+                <ins class="adsbygoogle"
+                     style="display:block; width:100%; height:250px;"
+                     data-ad-client="ca-pub-7564440414393746"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <!-- History Panel -->
+            <div class="bg-white dark:bg-calc-card rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col h-full min-h-[300px] max-h-[500px] shadow-sm dark:shadow-none transition-colors duration-300">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold text-slate-800 dark:text-gray-200 transition-colors">History</h2>
+                    <button class="text-sm text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300 transition-colors" onclick="clearHistory()">Clear</button>
+                </div>
+                <div id="history-container" class="flex-grow overflow-y-auto pr-2 custom-scrollbar flex flex-col gap-3">
+                    <!-- History items injected here -->
+                    <div class="text-slate-500 text-sm italic text-center mt-4">No history yet.</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-calc-display py-8 mt-auto transition-colors duration-300">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 max-w-5xl">
+            <div class="text-slate-500 dark:text-slate-400 text-sm text-center md:text-left transition-colors">
+                &copy; <span id="year"></span> Free Online Scientific Calculator. All rights reserved.
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
+                <a href="index.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">Home</a>
+                <a href="about.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">About Us</a>
+                <a href="privacy.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">Terms of Service</a>
+                <a href="#contact" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors" onclick="toggleModal('contact-modal')">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-calc-card max-w-2xl w-full rounded-2xl border border-slate-200 dark:border-slate-700 p-6 sm:p-8 max-h-[90vh] overflow-y-auto custom-scrollbar transition-colors duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-slate-800 dark:text-white">Contact Us</h3>
+                <button onclick="toggleModal('contact-modal')" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white text-2xl leading-none transition-colors">&times;</button>
+            </div>
+            <div class="text-slate-600 dark:text-slate-300 transition-colors">
+                <p class="mb-4">Have a question or feedback? We'd love to hear from you!</p>
+                <form onsubmit="event.preventDefault(); alert('Message sent successfully!'); toggleModal('contact-modal');" class="flex flex-col gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1 text-slate-600 dark:text-slate-400">Name</label>
+                        <input type="text" required class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-calc-accent focus:ring-1 focus:ring-blue-500 dark:focus:ring-calc-accent transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1 text-slate-600 dark:text-slate-400">Email</label>
+                        <input type="email" required class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-calc-accent focus:ring-1 focus:ring-blue-500 dark:focus:ring-calc-accent transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1 text-slate-600 dark:text-slate-400">Message</label>
+                        <textarea required rows="4" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-calc-accent focus:ring-1 focus:ring-blue-500 dark:focus:ring-calc-accent transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-500 dark:bg-calc-accent hover:bg-blue-600 dark:hover:bg-calc-accentHover text-white font-semibold py-2 px-6 rounded-lg transition-colors mt-2">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
